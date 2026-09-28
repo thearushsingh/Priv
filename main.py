@@ -37,7 +37,7 @@ def random_date_in_last_year():
     today = datetime.now()
     start_date = today - timedelta(days=365)
     random_days = random.randint(0, 364)
-    random_seconds = random.randint(0, 233600 + 3599)
+    random_seconds = random.randint(0, 23*3600 + 3599)
     commit_date = start_date + timedelta(days=random_days, seconds=random_seconds)
     return commit_date
 
@@ -53,7 +53,7 @@ def make_commit(date, repo_path, filename, message="graph-greener!"):
     subprocess.run(["git", "commit", "-m", message], cwd=repo_path, env=env)
 
 def main():
-    print("="60)
+    print("="*60)
     print("🌱 Welcome to graph-greener - GitHub Contribution Graph Commit Generator 🌱")
     print("="*60)
     print("This tool will help you fill your GitHub contribution graph with custom commits.\n")
@@ -74,5 +74,5 @@ def main():
     print("✅ All done! Check your GitHub contribution graph in a few minutes.\n")
     print("Tip: Use a dedicated repository for best results. Happy coding!")
 
-if name == "main":
+if __name__ == "__main__":
     main()
